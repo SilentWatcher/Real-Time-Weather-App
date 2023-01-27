@@ -1,0 +1,184 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+
+  
+}
+:root{
+    --spacing-medium:8px;
+    --spacing-regular:16px;
+    --font-small:0.5rem;
+    --font-regular:1rem;
+    --font-large:2rem;
+    --font-xl:4rem;
+    --font-semibold:600;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif; 
+    max-width: 800px;
+    margin: var(--spacing-regular) auto;
+    background: rgb(2, 2, 19);
+    color: black;
+
+
+    background-image: url("./images/cloud1.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+   
+}
+
+
+/* mobile styling */
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas:
+    "search search"
+    "current current"
+    "hourly hourly"
+    "fiveday fiveday"
+    "feelslike humidity";
+    gap: var(--spacing-regular);
+
+
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(25px);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    
+
+}
+#search{
+    grid-area: search;
+    font-size: var(--font-regular);
+    border-radius: var(--font-regular);
+    padding: var(--spacing-medium);
+    font-weight: var(--font-semibold);
+}
+
+h1,h2{
+    margin: 0;
+}
+p{
+    margin: var(--spacing-medium);
+}
+.container, .container>article{
+    border: 1px solid black;
+    border-radius: var(--spacing-medium);
+    padding: var(--spacing-regular);
+}
+/* style related to current weather date */
+
+.current_forecast .temp{
+    font-size: var(--font-xl);
+}
+
+.current_forecast .description{
+    text-transform: capitalize;
+}
+.current_forecast .description,.current_forecast .min_max_temp{
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}
+
+
+.current_forecast{
+    grid-area: current;
+    text-align: center;
+}
+
+/* style related to hourly weather date */
+
+.hourly_forecast{
+    grid-area: hourly;
+    text-align: center;
+
+}
+ .hourly_forecast .hourly_container{
+    display: grid;
+    grid-template-columns: repeat((auto-fill, minmax(100px,1fr)));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(100px,1fr);
+    overflow-x: auto;
+    gap: var(--spacing-medium);
+
+}
+ .hourly_forecast .hourly_container .icon{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+
+ }
+ /* .hourly_forecast .hourly_container .time{
+
+ } */
+ .hourly_forecast .hourly_container .hourly_temp{
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+ }
+
+.five_day_forecast{
+    grid-area: fiveday;
+    text-align: center;
+
+}
+.five_day_forecast .five_day_forecast_container{
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.five_day_forecast_container .day_wise_forecast{
+    display: grid;
+    grid-template:  auto / repeat(4,1fr);
+    gap: var(--spacing-regular);
+    place-items: center;
+
+}
+
+.five_day_forecast_container .day_wise_forecast .min_temp,
+.five_day_forecast_container .day_wise_forecast .max_temp{
+    font-size: var(--font-regular);
+    font-weight: var(--font-semibold);
+}.five_day_forecast_container .day_wise_forecast .max_temp{
+    justify-self: end;
+}
+.five_day_forecast_container .day_wise_forecast .min_temp{
+    opacity: 50%;
+}
+.five_day_forecast_container .day_wise_forecast .icon{
+    width: 75%;
+    height: 75%;
+}.five_day_forecast_container .day_wise_forecast .day{
+    text-transform: capitalize;
+    justify-self: start;
+}
+#feels_like{
+    grid-area: feelslike;
+    text-align: center;
+}
+
+#humidity{
+    grid-area: humidity;
+    text-align: center;
+}
+
+
+@media (width >=650px){
+
+
+    .container{
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas:
+    "search search search search"
+    "current current current current"
+    "hourly hourly fiveday fiveday"
+    "feelslike humidity fiveday fiveday";
+
+
+    }
+}
+
